@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         tvLogin = findViewById(R.id.tvLogin);
 
 
-        // Initialise the database helper, helps catch initialisation errors that occured during startup
+        // Initialise the database helper, helps catch initialisation errors that occurred during startup
         try {
             dbHelper = new DatabaseHelper(this);
         } catch (Exception e) {

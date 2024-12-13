@@ -27,6 +27,19 @@
             android:exported="false"/>
         <activity android:name=".DashboardActivity"
             android:exported="false"/>
+        <activity android:name=".PatientManagementActivity"
+            android:exported="false"/>
+        <activity android:name=".AddPatientActivity"
+            android:exported="false"/>
+        <activity android:name=".EditPatientActivity"
+            android:exported="false"/>
+        <activity android:name=".DoctorManagementActivity"
+            android:exported="false"/>
+        <activity android:name=".AddDoctorActivity"
+            android:exported="false"/>
+        <activity android:name=".EditDoctorActivity"
+            android:exported="false"/>
+
 
     </application>
 

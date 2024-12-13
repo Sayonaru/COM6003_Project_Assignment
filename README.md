@@ -4,7 +4,7 @@ The aim of this assignment is to develop a Hospital Management App (HMP) to rati
 A development process will be outlined in this README file involving sprints which are directly correlated to the labs provided in the sessions.
 
 
-### Lab 1 - Gathering User Requirements
+## Lab 1 - Gathering User Requirements
 To begin with, I will be breaking down the core functionalities of the HMP into Epics and  into their corresponding user stories.
 These methods of requirement gathering are used to outline functional requirements, with the security-focused evil user stories highlighting potential risks and vulnerabilities.
 
@@ -35,11 +35,11 @@ With the use of these Epic User Stories, I can easily uncover the core functiona
 These stories will be continuously referenced throughout development to ensure that functional requirements are being met and security is efficient.
 
 
-### Lab 2 - Threat Modelling
+## Lab 2 - Threat Modelling
 The report document can be found in the first section of the file directory for this project in the zip file.
 
 
-### Lab 3 - User Authentication (Developing Login and Registration)
+## Lab 3 - User Authentication (Developing Login and Registration)
 The objective of this sprint is to design the login and registration screen for the app, ensuring user authentication and setting foundation for accessing the app securely.
 
 This sprint covers initial design of screens and addressing user story 1.1.
@@ -47,16 +47,16 @@ This sprint covers initial design of screens and addressing user story 1.1.
 The relevant screens for the sprint have been developed and functional, along with necessary security features that are needed for GitHub at the moment.
 The data validation has been complete. All fields must not be empty. Password must contain: 8+ characters, at least 1 character, number, and special character. The username the user chooses must not already exist in the database to avoid conflicts. The email must be in the correct format, at least 1 character before @, then a letter followed by ".com". The password gets entered into the database hashed with SHA-256 and other sensitive data like username and email are encrypted. The only thing left for 1.1 is logging failed attempts which will be completed in a later sprint.
 
-#### Testing
+### Testing
 Testing will be conducted at the end of each sprint to ensure that everything is working efficiently and correctly. These will be broken down into static, dynamic and edge case testing.
 
-##### Static Testing
+#### Static Testing
 After reviewing the code, I believe common practices are followed with naming conventions, functions, and database handling. The UI is going to be basic for this project as the main criteria is checking secure development and deployment over UI design and I want to ensure this is done to a high standard rather than spending loads of time on the UI.
 
 Using Android Studio's Lint to inspect code and output any issues or warnings with the code provided no glaring errors with the project, just some preference changes with the hardcoded text.
 ![img.png](img.png)
 
-##### Dynamic Testing & Edge Cases
+#### Dynamic Testing & Edge Cases
 Testing for running the app was conducted on my own Google Pixel 5.
 
 Test cases have been developed to ensure all aspects of the app that have been added in this sprint are being tested with the expected and actual outcomes recorded to see if any changes are needed.
@@ -69,4 +69,70 @@ Test cases have been developed to ensure all aspects of the app that have been a
 | **Feedback Messages**        | Test if the toast messages displayed provide significant information to the user for what the issue is.                                                                                                                      | Appropriate feedback should appear when users interact with the app, such as success and error messages.                     | Feedback messages display correctly based on user input, providing clear error messages such as declaring what exactly is missing from password. |
 
 
-### Lab 4 - Patient Management
+## Lab 4 - Patient Management
+The objective of this sprint is to implement the core CRUD operations for managing patient records in the application. 
+
+This sprint covers Epic 2 including both 2.1 and 2.2. 
+
+Development involves screens for patient management, a list of all the patients currently available in the database, creating new users, and editing existing users. 
+All data validation is functional, all required fields cannot remain empty, toasts and popups appear when significant changes are made and deletion is about to occur.
+
+### Testing
+This testing phase will go over validation, making sure the current app state is functioning properly and the database is storing correctly.
+
+#### Static Testing
+Common practices are still being followed throughout all areas of the code. The ui is still basic, just allowing for the navigation between screens and visibility of relevant data on the screen.
+
+Android Studio Lint is displaying roughly the same warnings as before, just some preferences around coding that aren't anything concerning
+![img_1.png](img_1.png)
+
+#### Dynamic Testing & Edge Cases
+
+| **Test Case**                                     | **Description**                                                                | **Expected Outcome**                                                     | **Actual Outcome**                                                |
+|---------------------------------------------------|--------------------------------------------------------------------------------|--------------------------------------------------------------------------|-------------------------------------------------------------------|
+| **Adding a Patient - Including Empty Fields**     | Test if the app prevents adding a patient with empty fields.                   | A Toast message should appear for missing fields.                        | The app displays a Toast for missing fields.                      |
+| **Adding a Patient - Including Valid Data**       | Test if the app adds a patient when all fields are filled correctly.           | Patient data is added to the database and a success message is shown.    | Patient is added, success message displayed.                      |
+| **View Patient List - Empty Database**            | Test if the app handles an empty patient database.                             | An empty list is displayed.                                              | An empty list is shown.                                           |
+| **View Patient List - Patient Entries**           | Test if the app displays multiple patients correctly in the list.              | All patients are displayed with correct names.                           | Patient names are displayed correctly.                            |
+| **Editing a Patient's Data - Empty Fields**       | Test if empty fields are prevented when editing a patient.                     | A Toast message should appear for missing fields.                        | The app shows a Toast message for empty fields.                   |
+| **Editing a Patient's Data - Valid Data**         | Test if editing patient details updates the database correctly                 | Updated details are saved in the database and a success message appears. | The patient data is updated and a success message is shown.       |
+| **Deleting a Patient - Confirmation**             | Test if the app asks for confirmation before deleting a patient.               | A confirmation dialog appears before deletion.                           | Confirmation dialog appears, patient deleted if confirmed.        |
+| **Database Integrity - Editing a Patient's Data** | Test if editing a patient's details updates the database correctly.            | The database reflects the updated details after saving.                  | The database correctly updates after editing a patient's details. |
+
+## Lab 5 - Doctor & Appointment Management
+The objective of this sprint is to build similar CRUD functionality as the patient management module, but for doctors. 
+
+This sprint covers Epic 3 including both 3.1 and 3.2.
+
+Development contains designing similar screens to those developed in Lab 4 and similar functionality as well. 
+Managing the appointments will be done using relational databases, with patientId and doctorId being the foreign keys to allow the numerous 1-many relationships. 
+This will also be used to easily handle any scheduling conflicts by viewing all of a doctors appointments, making sure they don't overlap in time schedules, with the same being the case for patients.
+Relational databases will also help make the appointment management between the two sides run in parallel and with data integrity since it's only changing 1 field since they are connected by id.
+
+### Testing 
+The testing will go over any validation that is required, analysing if the CRUD operations were implemented correctly, and the overall app is working as intended.
+
+#### Static Testing
+Common practices followed throughout coding. The ui, such as the list views, update and view effectively to output the necessary data to the user.
+
+Lint is outputting the same results which are involving stuff like hard-coded text and similar stuff which is just preference in this scenario, but at a higher level and with more time I would sort out some of these minor issues.
+![img_2.png](img_2.png)
+
+#### Dynamic Testing & Edge Cases
+
+| **Test Case**                                    | **Description**                                                     | **Expected Outcome**                                                     | **Actual Outcome**                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|--------------------------------------------------------------------------|------------------------------------------------------------|
+| **Adding a Doctor - Including Empty Fields**     | Test if the app prevents adding a doctor with empty fields.         | A Toast message should appear for missing fields.                        | The app displays a Toast for missing fields.               |
+| **Adding a Patient - Including Valid Data**      | Test if the app adds a doctor when all fields are filled correctly. | Doctor data is added to the database and a success message is shown.     | Doctor is added, success message displayed.                |
+| **View Doctor List - Empty Database**            | Test if the app handles an empty doctor database.                   | An empty list is displayed.                                              | An empty list is shown.                                    |
+| **View Doctor List - Doctor Entries**            | Test if the app displays multiple doctors correctly in the list.    | All doctors are displayed with correct names.                            | Doctor names are displayed correctly.                      |
+| **Editing a Doctor's Data - Empty Fields**       | Test if empty fields are prevented when editing a doctor.           | A Toast message should appear for missing fields.                        | The app shows a Toast message for empty fields.            |
+| **Editing a Doctor's Data - Valid Data**         | Test if editing doctor details updates the database correctly       | Updated details are saved in the database and a success message appears. | The doctor data is updated and a success message is shown. |
+| **Deleting a Doctor - Confirmation**             | Test if the app asks for confirmation before deleting a doctor.     | A confirmation dialog appears before deletion.                           | Confirmation dialog appears, doctor deleted if confirmed.  |
+
+## Conclusion & Review
+Due to time constraints and errors I ran into during development, most of the epics and user stories I couldn't cover. However, most of the features from the epics were additional criteria indentified through the initial gathering of requirements. Most of the stuff ask in all briefs were met, with a few things missing from the final step such as the appointment management, and while ideas were made on how to implement unfortunately did not have enough time. Most of the Labs were completed, 1 - 4 with 5 being half done, just needing to work on the appointment side of things.
+
+Despite the missing criteria, I believe that all criteria that was met, especially that asked in the brief were done effectively and securely. The password is efficiently hashed and other valuable user data is encrypted to prevent gathering the data by just gaining access to the database. All validation across the app works as intended, letting the user know when something has or hasn't gone through with the use of toasts. The correct data is displayed to the user, decrypted from the database. All CRUD operations are present in the app, being able to create both patients and doctors, read of the relevant data from both the list view and edit menus, updating it via the edit menu and deleting data when certain items are held down in the list. 
+
+Continuing this project in the future, I would begin with completing the appointment section since I have a solution on how to develop it. Then would be finalising areas of the app, such as updating the UI, and ensuring that signatures and other admin tools can be easily accessed via the dashboard.
